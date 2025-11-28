@@ -16,6 +16,8 @@ class IPhoneDevice(Device):
     
     def __init__(self, env, pos_sensitivity: float = 1.0, rot_sensitivity: float = 1.0, port: int = 5557):
         super().__init__(env)
+
+        self._display_controls()
         
         self.pos_sensitivity = pos_sensitivity
         self.rot_sensitivity = rot_sensitivity
@@ -91,6 +93,20 @@ class IPhoneDevice(Device):
         @self._sio.event
         def message(sid, data):
             print(f"generic message: {type(data)} - {str(data)[:100]}...")
+
+    @staticmethod
+    def _display_controls():
+        def print_command(char, info):
+            char += " " * (30 - len(char))
+            print("{}\t{}".format(char, info))
+
+        print("")
+        print_command("iPhone Motion", "Commands")
+        print_command("tilt forward/backward", "move forward/backward")
+        print_command("tilt left/right", "move left/right")
+        print_command("twist counter-clockwise/clockwise", "rotate counter-clockwise/clockwise")
+        print_command("return to upright", "stop all motion")
+        print("")
 
     def _set_neutral_orientation(self, orientation_dict):
         self._neutral_quat = np.array([
