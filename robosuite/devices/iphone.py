@@ -101,6 +101,7 @@ class IPhoneDevice(Device):
             print("{}\t{}".format(char, info))
 
         print("")
+        print("note: phone teleop is intended only for base control")
         print_command("iPhone Motion", "Commands")
         print_command("tilt forward/backward", "move forward/backward")
         print_command("tilt left/right", "move left/right")
