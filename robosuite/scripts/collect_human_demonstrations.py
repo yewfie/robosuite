@@ -369,6 +369,14 @@ if __name__ == "__main__":
         from robosuite.devices.mjgui import MJGUI
 
         device = MJGUI(env=env)
+    elif args.device == "iphone": # added
+        from robosuite.devices.iphone import IPhoneDevice
+
+        device = IPhoneDevice(
+            env=env,
+            pos_sensitivity=args.pos_sensitivity,
+            rot_sensitivity=args.rot_sensitivity
+        )
     else:
         raise Exception("Invalid device choice: choose either 'keyboard' or 'spacemouse'.")
 
