@@ -1,5 +1,6 @@
 from .device import Device
 from .keyboard import Keyboard
+from .iphone import IPhoneDevice
 
 try:
     from .spacemouse import SpaceMouse
@@ -11,3 +12,5 @@ except ImportError as e:
            Only macOS is officially supported. Install the additional\n
            requirements with `pip install -r requirements-extra.txt`"""
     )
+
+__all__ = ["Device", "Keyboard", "SpaceMouse", "IPhoneDevice"]
